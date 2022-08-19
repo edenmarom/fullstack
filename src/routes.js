@@ -18,12 +18,12 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const require = createRequire(import.meta.url);
-const ads = require('./ads.json');
+//const ads = require('./ads.json');
 const router = express.Router();
 
-// router.use('/css',express.static(path.join(__dirname, '/../public/css')));
-
-// router.use('/html',express.static(path.join(__dirname, '/../public/html')));
+router.use('/css',express.static(path.join(__dirname, '/../public/css')));
+router.use('/js',express.static(path.join(__dirname, '/../public/js')));
+router.use('/html',express.static(path.join(__dirname, '/../public/html')));
 
 // router.use('/images',express.static(path.join(__dirname, '/../public/images')));
 

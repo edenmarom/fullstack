@@ -4,10 +4,10 @@ import {
 } from "../db-queries.js";
 
 export const checkCredentials = async (req, res, next) => {
-    const username = req.body.userName;
-    const password = req.body.password;
+    const username = (req.body.userName);
+    const password = (req.body.password);
     const result = await checkCredentialsQuery(username, password);
-    result ? res.send(result) : res.status(404).send(`Wrong Credentials.`);
+    result.length!=0 ? res.send(result) : res.status(404).send(`Wrong Credentials.`);
     await next();
 };
 
