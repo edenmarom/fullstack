@@ -1,16 +1,17 @@
 const serverAddr = "http://localhost:8080/";
 const loginAddress = serverAddr+ "html/login.html"
-const cssAddr = serverAddr + "css/";
-const loginCss = cssAddr + "login.css"
+const loginCss = serverAddr + "css/login.css"
 
-function main() {loadInitialView();}
-//http://localhost:8080/html/login.html
+function main(){
+    loadView(loginAddress, loginCss);
+}
+
 main();
 
-function loadInitialView() { //get request for files
-
+function loadView(htmlAddr, cssAddr) { //get request for files
+    
     $.ajax({
-        url: loginAddress,
+        url: htmlAddr,
         type: 'GET',
         success: (res) => {
             $("#content").html(res);
@@ -23,7 +24,7 @@ function loadInitialView() { //get request for files
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = loginCss;
+    link.href = cssAddr;
     link.media = 'all';
     $("head").append(link);
 

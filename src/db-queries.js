@@ -41,7 +41,8 @@ export const getProductsWithFiltersQuery = (minPrice, maxPrice, location, catego
 };
 
 export const checkCredentialsQuery = (username, password) => {
-    return UserModel.find({'userName': username, 'password': password});
+    const query= {'userName': username, 'password': password};
+    return UserModel.find(query);
 };
 
 export const createNewUserQuery = (user) => {
