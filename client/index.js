@@ -30,21 +30,6 @@ function loadView(htmlAddr, cssAddr) { //get request for files
 
 }
 
-function insertAdData(ad) {
-    $(document).ready(() => {  
-        $("#header").html(ad.header);
-        $("p").empty();
-        ad.text = ad.text.slice(0, txtLimit);
-        ad.text.forEach(line => {
-            $("p").append('<div>' + line + '</div>');
-        });
-        $(".images-list").empty();
-        ad.images = ad.images.slice(0, imgLimit);
-        ad.images.forEach(img => {
-            $(".images-list").append('<img alt="Avtar" src="' + imgAddr + img + '">');
-        });
-    });
-}
 
 function loadAd(ad) {
     console.log("load ad number " + ad.id);
