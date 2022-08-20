@@ -1,37 +1,58 @@
-const product={
-"_id":{"$oid":"62f53339391b3c986d32544d"},
-"name":"מיקסר חשמלי",
-"price":"120",
-"currency":"שקל",
-"imgUrl":"https://cdn.azrieli.com/Images/f34b1d0e-89ad-4a7c-a0d1-caec3578b6d6/Normal/621d72e8.jpg",
-"videoUrl":"mixer.mp4",
-"description":"aaa",
-"location":"קריית אונו",
-"category":"מוצרי חשמל",
-"publisherId":"62f9441dd3cf9af2d98b12db",
-"__v":{"$numberInt":"0"},
-"status":"sold"
-};
+const productListHtmlAddr = serverAddr + "html/product-list.html";
+const productListCssAddr = serverAddr + "css/product-list.css";
+const myAccountHtmlAddr = serverAddr + "html/my-account.html";
+const myAccountCssAddr = serverAddr + "css/my-account.css";
+const aboutUsHtmlAddr = serverAddr + "html/about-us.html";
+const aboutUsCssAddr = serverAddr + "css/about-us.css";
 
-const viedoAdress = serverAddr + "vids/";
+const videoAdress = serverAddr + "vids/";
+const productsAdress = serverAddr +'products';
+const productTemplateAdress = serverAddr +'html/product.html';
+let productList = [];
 
-function insertProductData(product) {
-    
-    $(document).ready(() => {  
-        $(".card-title").html(product.name);
-        $(".card-text").html(product.description);
-        $(".card-price").html(product.price); 
-        $(".currency").html(product.currency);
-        $(".card-img-top").attr("src",product.imgUrl);
-            $(document).ready(() => {  
-            var video = document.getElementById('video');
-            var source = document.getElementById('source');
-
-            source.setAttribute('src', viedoAdress+product.videoUrl);
-            video.load();
-            video.play();
-        });          
-    });
+function createCanvas() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.font = "30px Arial";
+    ctx.fillText("Share & Buy", 10, 50); 
 }
-insertProductData(product);
 
+function main() {
+    createCanvas(); 
+    loadHomeContent(productListHtmlAddr,productListCssAddr); 
+}
+main();
+
+function loadHomeContent(htmlAddr,cssAddr) { 
+    $.ajax({
+        url: htmlAddr,
+        type: 'GET',
+        success: (res) => {
+            $("#homeContent").empty();
+            $("#homeContent").html(res);
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: " + error);
+        }
+    });
+   
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = cssAddr;
+    link.media = 'all';
+    $("head").append(link);
+}
+
+$('#myAccount').click(function(){
+    loadHomeContent(myAccountHtmlAddr,myAccountCssAddr);    
+});
+
+$('#aboutUs').click(function(){
+    loadHomeContent(aboutUsHtmlAddr,aboutUsCssAddr);    
+});
+
+$('#home').click(function(){
+    loadHomeContent(productListHtmlAddr,productListCssAddr);    
+});
+ 
