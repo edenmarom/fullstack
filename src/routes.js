@@ -24,7 +24,7 @@ const router = express.Router();
 router.use('/css',express.static(path.join(__dirname, '/../public/css')));
 router.use('/js',express.static(path.join(__dirname, '/../public/js')));
 router.use('/html',express.static(path.join(__dirname, '/../public/html')));
-
+router.use('/vids',express.static(path.join(__dirname, '/../public/vids')));
 // router.use('/images',express.static(path.join(__dirname, '/../public/images')));
 
 // router.get('/screen=:screenId', (req, res) => {
