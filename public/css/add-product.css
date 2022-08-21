@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+}
+
+.container {
+    background-color: rgba(22, 160, 133,0.7);
+    border-radius: 20px;
+    
+    width: 150%;
+    height: 100%;
+    padding: 1em;
+    
+}

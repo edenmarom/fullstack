@@ -1,0 +1,12 @@
+#productList
+{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3 , 2fr);
+}
+
+.card
+{
+    font-family: fantasy;
+    border: 1px black;
+}
