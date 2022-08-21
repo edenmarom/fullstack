@@ -22,12 +22,14 @@
 
       socket.on("counter", (counter) => {
         console.log("got counter", counter);
-        document.getElementById("counter").innerText = counter;
+        document.getElementById(
+          "counter"
+        ).innerText = `קונים מחוברים ${counter}`;
       });
     </script>
   </head>
   <body>
-    <div id="counter"></div>
+    <div id="counter" style="text-align: center"></div>
     <div id="content"></div>
   </body>
 </html>

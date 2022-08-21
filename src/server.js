@@ -1,31 +1,22 @@
-import { initDb } from './db.js';
-import cors from 'cors';
-import express from 'express';
-import http from 'http';
-import routes from './routes.js'
+import http from "http";
+import { app } from "./http-server.js";
+import { Server } from "socket.io";
+const server = http.createServer(app);
+const io = new Server(server, { cors: { origins: "*:*" } });
 
-export const app = express();
-const port = 8080;
-const ip = "127.0.0.1";
+let userCounter = 0;
+io.on("connection", (socket) => {
+  console.log("connection");
+  userCounter++;
+  io.emit("counter", userCounter);
 
-app.use(cors());
-app.use(express.json());
-app.set('port', process.env.PORT || port);
-app.set('ipaddr', process.env.IP || ip);
-
-http.createServer(app).listen(app.get('port'), () => {
-  console.log("Server listening on port " + app.get('port'));
+  socket.on("disconnect", () => {
+    userCounter--;
+    io.emit("counter", userCounter);
+  });
 });
+const port = 8080;
 
-app.use('/', routes);
-
-initDb();
-
-
-
-
-
-
-
-
-
+server.listen(port, () => {
+  console.log(`listening on ${port}`);
+});
