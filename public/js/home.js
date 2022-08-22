@@ -12,7 +12,7 @@ const publisherAdrress = serverAddr + "products/publisher/";
 const filterAddr = serverAddr + "products/getProductsWithFilters/";
 const productsAdress = serverAddr +'products';
 const productTemplateAdress = serverAddr +'html/product.html';
-const getProductAddr = serverAddr + "products/createProduct/";
+const createProductAddr = serverAddr + "products/createProduct/";
 
 let productList = [];
 

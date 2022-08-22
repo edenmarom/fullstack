@@ -20,14 +20,13 @@ $('#addBtn').click(function(){
        $('#imgUrl').val().length > 0 &&
        $('#product-description').val().length > 0) {
             $.ajax({
-                url: getProductAddr,
+                url: createProductAddr,
                 type: 'POST',
                 data: newProductParams,
                 'contentType': 'application/json',
                 'processData': false,
                 success: () => {
                     alert("product added successfully")
-                    getAllProducts();
                 },
                 error: (xhr, status, error) => {}});
        }
