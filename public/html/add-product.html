@@ -1,67 +1,37 @@
-<!-- <header>
-    <div class="text-box">
-      <h1 id="title">Add new product</h1><hr>
-    </div>
-  </header>
-      <div class="container">
-        <form id="survey-form" method="GET">
-           <div class="labels">
-            <label id="name-label" for="name">Product name</label></div>
-          <div class="input-tab">
-            <input class="input-field" type="text" id="name" name="name" placeholder="Product-name" required autofocus></div>
-          <div class="labels">
-            <label id="number-label" for="number">Price</label></div>
-          <div class="input-tab">
-                    <input class="input-field" type="number" id="number" name="number"></div>
-            <div class="labels">
-            <label for="dropdown">Select product type</label></div>
-          <div class="input-tab">
-            <select id="dropdown" name="site">
-              <option disabled value selected>Select an option</option>
-              <option value="web">מוצרי חשמל</option>
-              <option value="hulu">כלי נגינה</option>
-             </select>
-          </div>     
-          <div class="labels">
-            <label for="comments">Add description</label></div>
-          <div class="input-tab">
-            <textarea class="input-field" id="comments" name="comments" rows="10" cols="40" placeholder="Your comments..."></textarea></div>
-          
-          <div class="btn">
-            <button id="submit" type="submit">Submit</button>
-          </div>
-          
-        </form>
-      </div> -->
-
-      <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Example select</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </form>
-      
+<form class="form-horizontal">
+  <header>Add new product</header>
+    <label class="col-md-4 control-label">Product name</label>  
+      <div class="col-md-4">
+        <input id="product-name" class="form-control input-md" required="" type="text">
+      </div>
+    <label class="col-md-4 control-label" for="product_name">Price</label>  
+      <div class="col-md-4">
+        <input id="price" class="form-control input-md" required="" type="text">
+      </div>
+    <label class="col-md-4 control-label" for="product_name">Price currency</label>  
+      <div class="col-md-4">
+        <input id="product-currency" class="form-control input-md" required="" type="text">
+      </div>
+    <label class="col-md-4 control-label" for="product_description">Product description</label>
+      <div class="col-md-4">                     
+        <textarea id="product-description" class="form-control"></textarea>
+      </div>  
+    <label class="col-md-4 control-label" for="product_description">Location</label>
+      <div class="col-md-4">                     
+        <textarea id="location" class="form-control"></textarea>
+      </div>   
+      <label class="col-md-4 control-label" for="product_description">Product Category</label>
+      <div class="col-md-4">                     
+        <textarea id="product-category" class="form-control"></textarea>
+      </div>
+      <label class="col-md-4 control-label" for="product_description">Add Image URL</label>
+      <div class="col-md-4">                     
+        <textarea id="imgUrl" class="form-control"></textarea>
+      </div>
+    <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+          <button id="addBtn" class="btn btn-primary">Add product</button>
+      </div>
+</form>
+<script src="http://localhost:8080/js/add-product.js"></script>
+       

@@ -8,8 +8,12 @@ const addProductHtmlAddr = serverAddr + "html/add-product.html";
 const addProductCssAddr = serverAddr + "css/add-product.css";
 
 const videoAdress = serverAddr + "vids/";
+const publisherAdrress = serverAddr + "products/publisher/";
+const filterAddr = serverAddr + "products/getProductsWithFilters/";
 const productsAdress = serverAddr +'products';
 const productTemplateAdress = serverAddr +'html/product.html';
+const getProductAddr = serverAddr + "products/createProduct/";
+
 let productList = [];
 
 function createCanvas() {

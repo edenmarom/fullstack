@@ -1,28 +1,29 @@
 <form>
-    <div class="form-row align-items-center">
-      <div class="col-auto">
+    <div class="form-row">
+      <div class="col-group col-md-2">
         <label class="sr-only" for="inlineFormInput">Minimum price</label>
         <input type="text" class="form-control mb-2" id="minPrice">
       </div>    
-      <div class="col-auto">
+      <div class="col-group col-md-2">
         <label class="sr-only" for="inlineFormInput">Maximum price</label>
         <input type="text" class="form-control mb-2" id="maxPrice">
       </div>    
-      <div class="col-auto">
+      <div class="col-group col-md-2">
         <label class="sr-only" for="inlineFormInput">location</label>
-        <input type="text" class="form-control mb-2" id="location">
+        <input type="text" class="form-control mb-4" id="location">
       </div>    
-      <div class="col-auto">
+      <div class="col-group col-md-2">
         <label class="sr-only" for="inlineFormInput">Category</label>
         <input type="text" class="form-control mb-2" id="category">
       </div>    
-      <div class="col-auto">
-        <button type="submit" id="filterBtn" class="btn btn-primary mb-2">Filter</button>
+      <div class="col-group col-md-1">
+        <button type="submit" id="filterBtn" class="btn btn-primary mb-1">Filter</button>
       </div>
-      <div class="col-auto">
-        <button type="submit" id="cancelBtn" class="btn btn-primary mb-2">Cancel</button>
+      <div class="col-group col-md-1">
+        <button type="submit" id="cancelBtn" class="btn btn-primary mb-1">Cancel</button>
       </div>
     </div>
-  </form>
+</form>
+
 <div id="productList"></div>
 <script src="http://localhost:8080/js/products.js"></script>

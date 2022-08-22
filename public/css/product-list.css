@@ -1,3 +1,15 @@
+.form-row
+{
+    display: flex;
+}
+
+.form-row.col-group
+{
+    flex: 1;
+   
+}
+
+
 #productList
 {
     list-style: none;

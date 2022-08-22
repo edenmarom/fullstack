@@ -1,17 +1,21 @@
-
-<div class="card" style="width: 18rem;">
-    <img src="{$imgSrc}" class="card-img-top" alt="">
-      <video autoplay controls id="video"> 
-      <source id="source" src="{$source}" type="video/mp4">
-    </video>
-    <div class="card-body">
-      <h5 class="card-title">{$name}</h5>
-      <p class="card-price">{$price}</p>
-      <p class="currency">{$currency}</p>    
-      <p class="card-text">{$description}</p>
-      <p class="category">{$category}</p>
-      <p class="status">{$status}</p>
-      <button id="{$productId}" class="btn btn-primary" onClick="buyClick(this.id)">רכישה</button>
-      <a href="#"id="shareBtn" class="btn btn-primary">שתף בפייסבוק</a>
-    </div>
+<div class="card" style="width: 18rem">
+  <img src="{$imgSrc}" class="card-img-top" alt="" />
+  <video autoplay controls id="video">
+    <source id="source" src="{$source}" type="video/mp4" />
+  </video>
+  <div class="card-body">
+    <h5 class="card-title">{$name}</h5>
+    <p class="card-price">{$price}</p>
+    <p class="currency">{$currency}</p>
+    <p class="card-text">{$description}</p>
+    <p class="category">{$category}</p>
+    <p class="status">{$status}</p>
+    <button id="{$productId}" class="btn btn-primary" onClick="buyClick(this.id)">רכישה</button>
+    <a
+      href="https://twitter.com/intent/tweet?via=ShareAndBuy&text=התחדשתי!: {$name}: {$price} {$currency}"
+      id="shareBtn"
+      class="btn btn-primary"
+      >שתף בטוויטר</a
+    >
   </div>
+</div>

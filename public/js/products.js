@@ -1,6 +1,3 @@
-const publisherAdrress = serverAddr + "publisher/";
-const filterAddr = serverAddr + "getProductsWithFilters/";
-
 function getAllProducts() {
     $.ajax({
         url: productsAdress,
