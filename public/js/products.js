@@ -3,6 +3,7 @@ function getAllProducts() {
         url: productsAdress,
         type: 'GET',
         success: (res) => {
+            productList = res;
             drawProductList(res);   
         },
         error: (xhr, status, error) => {
@@ -11,13 +12,13 @@ function getAllProducts() {
     });    
 }
 
-function drawProductList(res) {
-    productList = res;
+function drawProductList(list) {
     $.get(productTemplateAdress, function (template) {
         const templateStr = template.toString();
-        const replacedTemplates = productList.map(product => {
+        const replacedTemplates = list.map(product => {
             return productFieldReplacement(templateStr, product);
         });
+        $("#productList").empty();
         $("#productList").html(replacedTemplates);
     });
 }
@@ -128,7 +129,6 @@ $('#filterBtn').click(function(){
             'contentType': 'application/json',
             'processData': false,
             success: (res) => {
-                console.log(res);
                 drawProductList(res);
             },
             error: (xhr, status, error) => {
@@ -144,18 +144,19 @@ $('#cancelBtn').click(function(){
    getAllProducts();
 });
 
-// $('#searchBtn').click(function(){
-//     let result = findInValues(productList)
-// });
+$('#searchBtn').click(function(){
+    let result = findInValues(productList, $("#search-input").val());
+    drawProductList(result);
+});
 
-// function findInValues(arr, value) {
-//     value = String(value).toLowerCase();
-//     return arr.filter(o =>
-//       Object.entries(o).some(entry =>
-//         String(entry[1]).toLowerCase().includes(value)
-//       )
-//     );
-// }
+function findInValues(arr, value) {
+    value = String(value).toLowerCase();
+    return arr.filter(o =>
+      Object.entries(o).some(entry =>
+        String(entry[1]).toLowerCase().includes(value)
+      )
+    );
+}
 
 function main() {
     getAllProducts();   
