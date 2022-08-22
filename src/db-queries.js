@@ -77,3 +77,53 @@ export const checkCredentialsQuery = (username, password) => {
 export const createNewUserQuery = (user) => {
   return UserModel.create(user);
 };
+
+export const purchaseCountPerMonthQuery = (id) => {
+    return TransactionModel.aggregate([
+        {
+            $match: {
+             buyer: id
+            }
+           }, {
+            $group: {
+             _id: {
+              month: {
+               $dateToString: {
+                format: '%Y-%m',
+                date: '$create_date'
+               }
+              },
+              buyer: '$buyer'
+             },
+             productsCount: {
+              $count: {}
+             }
+            }
+           }
+    ]);
+};
+
+export const salesCountPerMonthQuery = (id) => {
+    return TransactionModel.aggregate([
+        {
+            $match: {
+                seller: id
+            }
+           }, {
+            $group: {
+             _id: {
+              month: {
+               $dateToString: {
+                format: '%Y-%m',
+                date: '$create_date'
+               }
+              },
+              seller: '$seller'
+             },
+             productsCount: {
+              $count: {}
+             }
+            }
+           }
+    ]);
+};
