@@ -5,6 +5,10 @@ import { fileURLToPath } from "url";
 import { transactionsRouter } from "./routers/transactions-router.js";
 import { productRouter } from "./routers/product-router.js";
 import { checkCredentials, createUser } from "./controllers/user-controller.js";
+import { 
+    salesCountPerMonthCSV,
+    purchaseCountPerMonthCSV  
+} from "./controllers/transaction-controller.js";
 import fetch, { Headers } from "node-fetch";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +21,8 @@ router.use("/js", express.static(path.join(__dirname, "/../public/js")));
 router.use("/html", express.static(path.join(__dirname, "/../public/html")));
 router.use("/vids", express.static(path.join(__dirname, "/../public/vids")));
 
-
+router.get('/purchaseCountPerMonthCSV/:id', purchaseCountPerMonthCSV);
+router.get('/salesCountPerMonthCSV/:id', salesCountPerMonthCSV);
 router.use("/products", productRouter);
 router.use("/transactions", transactionsRouter);
 router.post("/checkCredentials", checkCredentials);
