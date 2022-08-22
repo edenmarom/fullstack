@@ -37,19 +37,76 @@ function productFieldReplacement(templateStr, product) {
 }
 
 function buyClick(id){
-    console.log("product = " + id);
-    console.log("buyer = " + userId);    
     
     $.ajax({
-        url: publisherAdrress + id,
+        url: getStatusByIdAddr + id,
         type: 'GET',
         success: (res) => {
-            console.log("seller = " + res);
+            if(res=="sold"){
+                alert("The product has been sold :(");
+            } else {
+                buyProduct(id);  
+            }
         },
         error: (xhr, status, error) => {
             console.log("Error: " + error);
         }
     });  
+}
+
+function buyProduct(id) {
+    let transactionParams = {};
+    $.ajax({
+        url: publisherAdrress + id,
+        type: 'GET',
+        success: (res) => {
+            transactionParams = JSON.stringify({
+                "seller": res,
+                "buyer": userId,
+                "product": id,
+                "create_date": new Date()
+            });
+            postTransaction(transactionParams);
+            updateProductStatus(id);
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: " + error);
+        }
+    });
+}
+
+function postTransaction(transactionParams) {
+    $.ajax({
+        url: createTransactionAddr,
+        type: 'POST',
+        data: transactionParams,
+        'contentType': 'application/json',
+        'processData': false,
+        success: (res) => {
+            loadHomeContent(myAccountHtmlAddr,myAccountCssAddr);    
+        },
+        error: (xhr, status, error) => {
+            alert("Error please try again.");
+        }
+    });
+}
+
+function updateProductStatus(productId) {
+    const updateData =  JSON.stringify({
+        "status": "sold"
+    });
+
+    $.ajax({
+        url: updateProductStatusAddr + productId,
+        type: 'PUT',
+        data: updateData,
+        'contentType': 'application/json',
+        'processData': false,
+        success: (res) => {},
+        error: (xhr, status, error) => {
+            alert("Error update.");
+        }
+    });
 }
 
 $('#filterBtn').click(function(){
@@ -83,9 +140,22 @@ $('#filterBtn').click(function(){
 
  });
 
- $('#cancelBtn').click(function(){
+$('#cancelBtn').click(function(){
    getAllProducts();
 });
+
+// $('#searchBtn').click(function(){
+//     let result = findInValues(productList)
+// });
+
+// function findInValues(arr, value) {
+//     value = String(value).toLowerCase();
+//     return arr.filter(o =>
+//       Object.entries(o).some(entry =>
+//         String(entry[1]).toLowerCase().includes(value)
+//       )
+//     );
+// }
 
 function main() {
     getAllProducts();   

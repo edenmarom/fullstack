@@ -13,6 +13,11 @@ const filterAddr = serverAddr + "products/getProductsWithFilters/";
 const productsAdress = serverAddr +'products';
 const productTemplateAdress = serverAddr +'html/product.html';
 const createProductAddr = serverAddr + "products/createProduct/";
+const createTransactionAddr = serverAddr + "transactions/createTransaction/";
+const updateProductStatusAddr = serverAddr + "products/";
+const getStatusByIdAddr = serverAddr + "products/status/";
+const getExschangeRatedAddr = serverAddr + "currency/";
+
 
 let productList = [];
 

@@ -14,9 +14,8 @@ $("#loginButton").click(function (e) {
     userName: $("#username").val(),
     password: $("#password").val(),
   });
-  debugger;
-
-  $.ajax({
+ 
+$.ajax({
     url: credentialAdrress,
     type: "POST",
     data: loginData,

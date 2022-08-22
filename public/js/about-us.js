@@ -34,7 +34,21 @@
 }); 
 }  
 
-$(document).ready(() => { 
-    initMap();
+function getExschangeRated() {
+    $.ajax({
+        url: getExschangeRatedAddr,
+        type: 'GET',
+        success: (res) => {
+            $("#currency").html(JSON.parse(res).result);
+            
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: " + error);
+        }
+    });
+}
 
-}); 
+function main() {
+    getExschangeRated();
+}
+main();

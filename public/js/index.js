@@ -8,8 +8,7 @@ function main(){
 
 main();
 
-function loadView(htmlAddr, cssAddr) { //get request for files
-    
+function loadView(htmlAddr, cssAddr) {
     $.ajax({
         url: htmlAddr,
         type: 'GET',
@@ -27,28 +26,6 @@ function loadView(htmlAddr, cssAddr) { //get request for files
     link.href = cssAddr;
     link.media = 'all';
     $("head").append(link);
-
-}
-
-
-function loadAd(ad) {
-    console.log("load ad number " + ad.id);
-    console.log("duration: " + ad.duration + " ms");
-    $(document).ready(() => { 
-        $.ajax({
-            url: templateAddr + ad.template,
-            type: 'GET',
-            success: (res) => {
-                $(document).ready(() => {  
-                    $('#currentAd').html(res);
-                    insertAdData(ad);
-                });
-            },
-            error: (xhr, status, error) => {
-                console.log("Error: " + error);
-            }
-        });    
-    });
 }
 
 

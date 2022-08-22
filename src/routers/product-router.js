@@ -6,7 +6,8 @@ import {
   deleteProduct,
   getGroupbyCategory,
   getProductsWithFilters,
-  getPublisherByProductId
+  getPublisherByProductId,
+  getStatusByProductId
 } from "../controllers/product-controller.js";
 export const productRouter = express.Router();
 
@@ -17,4 +18,6 @@ productRouter.delete("/:id", deleteProduct);
 productRouter.get("/groupByCategory", getGroupbyCategory);
 productRouter.post("/getProductsWithFilters", getProductsWithFilters);
 productRouter.get('/publisher/:id', getPublisherByProductId);
+productRouter.get('/status/:id', getStatusByProductId);
+
 

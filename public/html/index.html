@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Full Stack App</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,10 +15,9 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"
     ></script>
-    <script src="./index.js"></script>
+    <script src="http://localhost:8080/js/index.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      //   const socket = io();
       const socket = io("http://localhost:8080");
 
       socket.on("counter", (counter) => {
@@ -31,5 +31,8 @@
   <body>
     <div id="counter" style="text-align: center"></div>
     <div id="content"></div>
+         <!-- <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXjbsCCO0jq3mWr5ELcr1Y8PsQiElUptM&callback=initMap&v=weekly" defer>
+       </script> -->
   </body>
 </html>

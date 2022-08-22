@@ -59,3 +59,13 @@ export const getPublisherByProductId = async (req, res, next) => {
     await next();
 };
 
+export const getStatusByProductId = async (req, res, next) => {
+    const id = req.params.id;
+    const product = await getProductByIdQuery(id);
+    product[0].status ? res.send(product[0].status) : res.status(404).send(`Product [id = ${id}] not found.`);
+    await next();
+};
+
+
+
+
