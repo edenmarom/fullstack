@@ -4,7 +4,13 @@ import {
   deleteTransactionQuery,
   getAllTransactionsQuery,
   getTransactionByIdQuery,
+  purchaseCountPerMonthQuery,
+  salesCountPerMonthQuery
 } from "../db-queries.js";
+import { parse } from 'json2csv';
+
+const fields = ['productsCount','_id.month'];
+const opts = { fields };
 
 export const getAllTransactions = async (req, res) => {
   const transaction = await getAllTransactionsQuery();
@@ -43,4 +49,34 @@ export const deleteTransaction = async (req, res) => {
   deletedTransaction
     ? res.send(deletedTransaction)
     : res.status(404).send(`Transaction [id = ${id}] not found.`);
+};
+
+export const purchaseCountPerMonthCSV = async (req, res, next) => {
+    const id = req.params.id;
+    const countPerMonth = await purchaseCountPerMonthQuery(id);
+
+    try {
+      const csv = parse(countPerMonth, opts);
+      res.send(csv);
+    } catch (err) {
+      console.error(err);
+      res.status(404).send(err);
+    }
+
+    await next();
+};
+
+export const salesCountPerMonthCSV = async (req, res, next) => {
+    const id = req.params.id;
+    const countPerMonth = await salesCountPerMonthQuery(id);
+
+    try {
+        const csv = parse(countPerMonth, opts);
+        res.send(csv);
+      } catch (err) {
+        console.error(err);
+        res.status(404).send(err);
+      }
+
+    await next();
 };
