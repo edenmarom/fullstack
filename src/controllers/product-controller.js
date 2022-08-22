@@ -4,7 +4,8 @@ import {
     getAllProductQuery,
     updateProductQuery,
     groupbyCategoryQuery,
-    getProductsWithFiltersQuery
+    getProductsWithFiltersQuery,
+    getProductByIdQuery
 } from "../db-queries.js";
 
 export const getAllProducts = async (req, res, next) => {
@@ -47,6 +48,14 @@ export const getProductsWithFilters = async (req, res, next) => {
     const category = req.body.category;
     const products = await getProductsWithFiltersQuery(minPrice, maxPrice, location, category);
     res.send(products);
+    await next();
+};
+
+
+export const getPublisherByProductId = async (req, res, next) => {
+    const id = req.params.id;
+    const product = await getProductByIdQuery(id);
+    product[0].publisherId ? res.send(product[0].publisherId) : res.status(404).send(`Product [id = ${id}] not found.`);
     await next();
 };
 

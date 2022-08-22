@@ -69,6 +69,11 @@ export const getProductsWithFiltersQuery = (
     .equals(category);
 };
 
+export const getProductByIdQuery = (id) => {
+    return ProductModel.find().
+    where("_id").equals(id);
+};
+
 export const checkCredentialsQuery = (username, password) => {
   const query = { userName: username, password: password };
   return UserModel.find(query);

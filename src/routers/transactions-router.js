@@ -13,5 +13,3 @@ transactionsRouter.get("/:id", getTransactionById);
 transactionsRouter.post("/createTransaction", createTransaction);
 transactionsRouter.put("/:id", updateTransaction);
 transactionsRouter.delete("/:id", deleteTransaction);
-// productRouter.get("/groupByCategory", getGroupbyCategory);
-// productRouter.post("/getProductsWithFilters", getProductsWithFilters);

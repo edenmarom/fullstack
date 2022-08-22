@@ -4,17 +4,30 @@ const myAccountHtmlAddr = serverAddr + "html/my-account.html";
 const myAccountCssAddr = serverAddr + "css/my-account.css";
 const aboutUsHtmlAddr = serverAddr + "html/about-us.html";
 const aboutUsCssAddr = serverAddr + "css/about-us.css";
+const addProductHtmlAddr = serverAddr + "html/add-product.html";
+const addProductCssAddr = serverAddr + "css/add-product.css";
 
 const videoAdress = serverAddr + "vids/";
+const publisherAdrress = serverAddr + "products/publisher/";
+const filterAddr = serverAddr + "products/getProductsWithFilters/";
 const productsAdress = serverAddr +'products';
 const productTemplateAdress = serverAddr +'html/product.html';
+const createProductAddr = serverAddr + "products/createProduct/";
+
 let productList = [];
 
 function createCanvas() {
+    
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    ctx.font = "30px Arial";
-    ctx.fillText("Share & Buy", 10, 50); 
+    ctx.font = "50px fantasy";
+    var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+    gradient.addColorStop("0", "black");
+    gradient.addColorStop("0.5", "white");
+    gradient.addColorStop("1.0", "black");
+    ctx.fillStyle = gradient;
+    ctx.fillText("Share&Buy", 10, 65);
+    
 }
 
 function main() {
@@ -55,4 +68,7 @@ $('#aboutUs').click(function(){
 $('#home').click(function(){
     loadHomeContent(productListHtmlAddr,productListCssAddr);    
 });
- 
+
+$('#addProduct').click(function(){
+    loadHomeContent(addProductHtmlAddr,addProductCssAddr);    
+});
