@@ -1,10 +1,10 @@
 function getAllProducts() {
     $.ajax({
-        url: productsAdress,
+        url: productsAddress,
         type: 'GET',
         success: (res) => {
             productList = res;
-            drawProductList(res);   
+            drawProductList(res, "#productList", productTemplateAddress);
         },
         error: (xhr, status, error) => {
             console.log("Error: " + error);
@@ -12,14 +12,14 @@ function getAllProducts() {
     });    
 }
 
-function drawProductList(list) {
-    $.get(productTemplateAdress, function (template) {
+function drawProductList(list, htmlTag, templateAddr) {
+    $.get(templateAddr, function (template) {
         const templateStr = template.toString();
         const replacedTemplates = list.map(product => {
             return productFieldReplacement(templateStr, product);
         });
-        $("#productList").empty();
-        $("#productList").html(replacedTemplates);
+        $(htmlTag).empty();
+        $(htmlTag).html(replacedTemplates);
     });
 }
 
@@ -31,19 +31,17 @@ function productFieldReplacement(templateStr, product) {
     temporaryTemplate = temporaryTemplate.replace('{$description}', product.description);
     temporaryTemplate = temporaryTemplate.replace('{$category}', product.category);
     temporaryTemplate = temporaryTemplate.replace('{$status}', product.status);
-    temporaryTemplate = temporaryTemplate.replace('{$source}', videoAdress + product.videoUrl);
     temporaryTemplate = temporaryTemplate.replace('{$imgSrc}', product.imgUrl);
     temporaryTemplate = temporaryTemplate.replace('{$productId}', product._id);
     return temporaryTemplate;
 }
 
 function buyClick(id){
-    
     $.ajax({
         url: getStatusByIdAddr + id,
         type: 'GET',
         success: (res) => {
-            if(res=="sold"){
+            if(res === "sold"){
                 alert("The product has been sold :(");
             } else {
                 buyProduct(id);  
@@ -58,7 +56,7 @@ function buyClick(id){
 function buyProduct(id) {
     let transactionParams = {};
     $.ajax({
-        url: publisherAdrress + id,
+        url: publisherAddress + id,
         type: 'GET',
         success: (res) => {
             transactionParams = JSON.stringify({
@@ -83,10 +81,10 @@ function postTransaction(transactionParams) {
         data: transactionParams,
         'contentType': 'application/json',
         'processData': false,
-        success: (res) => {
+        success: () => {
             loadHomeContent(myAccountHtmlAddr,myAccountCssAddr);    
         },
-        error: (xhr, status, error) => {
+        error: () => {
             alert("Error please try again.");
         }
     });
@@ -103,8 +101,8 @@ function updateProductStatus(productId) {
         data: updateData,
         'contentType': 'application/json',
         'processData': false,
-        success: (res) => {},
-        error: (xhr, status, error) => {
+        success: () => {},
+        error: () => {
             alert("Error update.");
         }
     });
@@ -129,15 +127,16 @@ $('#filterBtn').click(function(){
             'contentType': 'application/json',
             'processData': false,
             success: (res) => {
-                drawProductList(res);
+                drawProductList(res, "#productList", productTemplateAddress);
             },
-            error: (xhr, status, error) => {
+            error: () => {
                 alert("Wrong Credentials. Please register first");
             }
         });
        }
-       else {alert("Please enter all filter fields")};
-
+       else {
+           alert("Please enter all filter fields");
+       }
  });
 
 $('#cancelBtn').click(function(){
@@ -146,7 +145,7 @@ $('#cancelBtn').click(function(){
 
 $('#searchBtn').click(function(){
     let result = findInValues(productList, $("#search-input").val());
-    drawProductList(result);
+    drawProductList(result, "#productList", productTemplateAddress);
 });
 
 function findInValues(arr, value) {

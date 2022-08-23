@@ -10,10 +10,10 @@ import {
     purchaseCountPerMonthCSV  
 } from "./controllers/transaction-controller.js";
 import fetch, { Headers } from "node-fetch";
+import { getAllLocations } from "./controllers/location-controller.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const require = createRequire(import.meta.url);
 const router = express.Router();
 
 router.use("/css", express.static(path.join(__dirname, "/../public/css")));
@@ -27,26 +27,30 @@ router.use("/products", productRouter);
 router.use("/transactions", transactionsRouter);
 router.post("/checkCredentials", checkCredentials);
 router.post("/createUser", createUser);
-router.get("/currency", (req, res) => {
-  const myHeaders = new Headers();
-  myHeaders.append("apikey", "N7w2RCppioLla9SnhcngymZTs9An99zN");
-
-  const requestOptions = {
-    method: "GET",
-    redirect: "follow",
-    headers: myHeaders,
-  };
-
-  fetch(
-    "https://api.apilayer.com/exchangerates_data/convert?to=ILS&from=USD&amount=1",
-    requestOptions
-  )
-    .then((response) => response.text())
-    .then((result) => {
-      console.log(result);
-      res.send(result);
-    })
-    .catch((error) => console.log("error", error));
-});
+router.get("/getAllLocations", getAllLocations);
+router.get("/currency", currencyApi);
 
 export default router;
+
+
+function currencyApi(req, res) {
+    const myHeaders = new Headers();
+    myHeaders.append("apikey", "N7w2RCppioLla9SnhcngymZTs9An99zN");
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+        headers: myHeaders,
+    };
+    fetch(
+        "https://api.apilayer.com/exchangerates_data/convert?to=ILS&from=USD&amount=1",
+        requestOptions
+    )
+        .then((response) => response.text())
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((error) =>{
+            console.log("error", error);
+            res.send("Error in convertion webservice")
+        });
+}

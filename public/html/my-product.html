@@ -7,11 +7,6 @@
     <p class="card-text">{$description}</p>
     <p class="category">{$category}</p>
     <p class="status">{$status}</p>
-    <button id="{$productId}" class="btn btn-primary" onClick="buyClick(this.id)">רכישה</button>
-    <a
-      href="https://twitter.com/intent/tweet?via=ShareAndBuy&text=התחדשתי!: {$name}: {$price} {$currency}"
-      id="shareBtn"
-      class="btn btn-primary"
-      >שתף בטוויטר</a>
+    <button id="{$productId}" class="btn btn-danger" onClick="deleteProductClick(this.id)">מחיקה</button>
   </div>
 </div>

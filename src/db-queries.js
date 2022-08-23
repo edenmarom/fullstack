@@ -1,10 +1,7 @@
-import mongoose from "mongoose";
-import { db } from "./db.js";
 import { ProductModel } from "./schemas/product.js";
 import { UserModel } from "./schemas/user.js";
-import pkg from "lodash";
 import { TransactionModel } from "./Schemas/transaction.js";
-const { keyBy } = pkg;
+import { LocationModel } from "./Schemas/location.js";
 
 export const getAllProductQuery = () => {
   return ProductModel.find();
@@ -12,6 +9,10 @@ export const getAllProductQuery = () => {
 
 export const getAllTransactionsQuery = () => {
   return TransactionModel.find();
+};
+
+export const getAllLocationsQuery = () => {
+    return LocationModel.find();
 };
 
 export const getTransactionByIdQuery = (id) => {
@@ -29,6 +30,7 @@ export const createNewTransactionQuery = (transaction) => {
 export const updateProductQuery = (id, product) => {
   return ProductModel.findOneAndUpdate({ _id: id }, product, { new: true });
 };
+
 export const updateTransactionQuery = (id, transaction) => {
   return TransactionModel.findOneAndUpdate({ _id: id }, transaction, {
     new: true,
@@ -38,6 +40,7 @@ export const updateTransactionQuery = (id, transaction) => {
 export const deleteProductQuery = (id) => {
   return ProductModel.findByIdAndDelete(id);
 };
+
 export const deleteTransactionQuery = (id) => {
   return TransactionModel.findByIdAndDelete(id);
 };
@@ -72,6 +75,11 @@ export const getProductsWithFiltersQuery = (
 export const getProductByIdQuery = (id) => {
     return ProductModel.find().
     where("_id").equals(id);
+};
+
+export const getMyProductsToSaleListQuery = (id) => {
+    return ProductModel.find().
+    where("publisherId").equals(id);
 };
 
 export const checkCredentialsQuery = (username, password) => {

@@ -7,26 +7,27 @@ const aboutUsCssAddr = serverAddr + "css/about-us.css";
 const addProductHtmlAddr = serverAddr + "html/add-product.html";
 const addProductCssAddr = serverAddr + "css/add-product.css";
 
-const videoAdress = serverAddr + "vids/";
-const publisherAdrress = serverAddr + "products/publisher/";
+const publisherAddress = serverAddr + "products/publisher/";
 const filterAddr = serverAddr + "products/getProductsWithFilters/";
-const productsAdress = serverAddr +'products';
-const productTemplateAdress = serverAddr +'html/product.html';
+const productsAddress = serverAddr +'products';
+const productTemplateAddress = serverAddr +'html/product.html';
+const myProductTemplateAddress = serverAddr +'html/my-product.html';
 const createProductAddr = serverAddr + "products/createProduct/";
 const createTransactionAddr = serverAddr + "transactions/createTransaction/";
 const updateProductStatusAddr = serverAddr + "products/";
 const getStatusByIdAddr = serverAddr + "products/status/";
-const getExschangeRatedAddr = serverAddr + "currency/";
-
+const getExchangeRateAddr = serverAddr + "currency/";
+const getMyProductsToSaleListAddr = serverAddr + "products/myProductsToSaleList/";
+const deleteProductAddr = serverAddr + "products/";
 
 let productList = [];
 
 function createCanvas() {
-    
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
+
+    const c = document.getElementById("myCanvas");
+    const ctx = c.getContext("2d");
     ctx.font = "50px fantasy";
-    var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+    const gradient = ctx.createLinearGradient(0, 0, c.width, 0);
     gradient.addColorStop("0", "black");
     gradient.addColorStop("0.5", "white");
     gradient.addColorStop("1.0", "black");

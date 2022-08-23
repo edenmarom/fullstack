@@ -5,7 +5,8 @@ import {
     updateProductQuery,
     groupbyCategoryQuery,
     getProductsWithFiltersQuery,
-    getProductByIdQuery
+    getProductByIdQuery,
+    getMyProductsToSaleListQuery,
 } from "../db-queries.js";
 
 export const getAllProducts = async (req, res, next) => {
@@ -65,6 +66,14 @@ export const getStatusByProductId = async (req, res, next) => {
     product[0].status ? res.send(product[0].status) : res.status(404).send(`Product [id = ${id}] not found.`);
     await next();
 };
+
+export const getMyProductsToSaleList = async (req, res, next) => {
+    const id = req.params.id;
+    const products = await getMyProductsToSaleListQuery(id);
+    products ? res.send(products) : res.status(404).send(`user [id = ${id}] not found.`);
+    await next();
+};
+
 
 
 
