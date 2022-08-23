@@ -1,5 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXjbsCCO0jq3mWr5ELcr1Y8PsQiElUptM&callback=initMap" async defer>
-</script>
+
 <div>שער ההמרה בין שקל לדולר בחנות שלנו הוא:</div>
 <div id="currency"></div>
 <div>סרטון על המכללה למנהל:</div>
@@ -7,7 +6,30 @@
  <source id="source" src="http://localhost:8080/vids/colman.mp4" type="video/mp4" />
 </video>
 <div>המיקום שלנו:</div>
-<div id="map"></div>
+<body>
+    <div id="map" style="width: 400px;height:400px;"></div>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        let map;
+        function initMap() {
+                map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+                backgroundColor: 'none',
+            });
+        }
+        $(document).ready(function() {
+            initMap();
+        });
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXjbsCCO0jq3mWr5ELcr1Y8PsQiElUptM&callback=initMap"
+        type="text/javascript">
+    </script>
+</body>
 <script src="http://localhost:8080/js/about-us.js"></script>
 
- 
