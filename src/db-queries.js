@@ -141,40 +141,44 @@ export const salesCountPerMonthQuery = (id) => {
     ]);
 };
 
-const agg = [
+export const getAllProductsByCategoryQuery = (category) => {
+  return ProductModel.find().
+  where("category").equals(category);
+};
+
+export const getMostBoughtCategoryQuery = (id) => {
+  return TransactionModel.aggregate([
     {
-        '$match': {
-            'buyer': 'gal'
+        $match: {
+            buyer: id
         }
     }, {
-        '$lookup': {
-            'from': 'products',
-            'localField': 'product',
-            'foreignField': '_id',
-            'as': 'ProdDetail'
+        $lookup: {
+            from: 'products',
+            localField: 'product',
+            foreignField: '_id',
+            as: 'ProdDetail'
         }
     }, {
-        '$project': {
-            '_id': 1,
+        $project: {
+            _id: 1,
             'ProdDetail.category': 1
         }
     }, {
-        '$group': {
-            '_id': {
-                'Cat': '$ProdDetail.category'
+        $group: {
+            _id: {
+                Cat: '$ProdDetail.category'
             },
-            'countOfCat': {
-                '$count': {}
+            countOfCat: {
+                $count: {}
             }
         }
     }, {
-        '$sort': {
+        $sort: {
             'countOfCat': -1
         }
     }, {
-        '$limit': 1
-    }, {}
-];
-
-
-
+        $limit: 1
+    }
+]);
+};

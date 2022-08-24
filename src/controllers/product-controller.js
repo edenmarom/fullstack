@@ -7,6 +7,7 @@ import {
     getProductsWithFiltersQuery,
     getProductByIdQuery,
     getMyProductsToSaleListQuery,
+    getAllProductsByCategoryQuery
 } from "../db-queries.js";
 
 export const getAllProducts = async (req, res, next) => {
@@ -73,6 +74,14 @@ export const getMyProductsToSaleList = async (req, res, next) => {
     products ? res.send(products) : res.status(404).send(`user [id = ${id}] not found.`);
     await next();
 };
+
+export const getAllProductsByCategory = async (req, res, next) => {
+    const category = req.params.category;
+    const products = await getAllProductsByCategoryQuery(category);
+    products ? res.send(products) : res.status(404).send([]);
+    await next();
+};
+
 
 
 

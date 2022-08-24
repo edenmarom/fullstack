@@ -15,6 +15,11 @@
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3 , 2fr);
+    padding: 50px;
+}
+
+.card{
+    margin: 20px;
 }
 
 .displayGraphs{

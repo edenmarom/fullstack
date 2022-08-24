@@ -5,15 +5,24 @@
 
 .form-row.col-group
 {
-    flex: 1;
-   
+    flex: 1; 
 }
 
 #productList
 {
-    list-style:circle;
     display: grid;
     grid-template-columns: repeat(3 , 2fr);
+    padding: 50px;
+}
+
+#suggestedProductList{
+    padding: 50px;
+    display: grid;
+    grid-template-columns: repeat(3 , 2fr);
+}
+
+.card{
+    margin: 20px;
 }
 
 

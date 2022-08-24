@@ -11,9 +11,11 @@ import {
 } from "./controllers/transaction-controller.js";
 import fetch, { Headers } from "node-fetch";
 import { getAllLocations } from "./controllers/location-controller.js";
+import { getMostBoughtCategoryQuery } from "./db-queries.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 const router = express.Router();
 
 router.use("/css", express.static(path.join(__dirname, "/../public/css")));
@@ -29,9 +31,9 @@ router.post("/checkCredentials", checkCredentials);
 router.post("/createUser", createUser);
 router.get("/getAllLocations", getAllLocations);
 router.get("/currency", currencyApi);
+router.get("/mostBoughtCategory/:id", getMostBoughtCategory);
 
 export default router;
-
 
 function currencyApi(req, res) {
     const myHeaders = new Headers();
@@ -53,4 +55,11 @@ function currencyApi(req, res) {
             console.log("error", error);
             res.send("Error in convertion webservice")
         });
+}
+
+async function getMostBoughtCategory (req, res, next) {
+    const id = req.params.id;
+    const category = await getMostBoughtCategoryQuery(id);
+    category ? res.send(category) : res.status(404).send(`user [id = ${id}] not found.`);
+    await next();
 }

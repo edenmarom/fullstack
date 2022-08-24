@@ -1,3 +1,4 @@
+
 function getAllProducts() {
     $.ajax({
         url: productsAddress,
@@ -10,6 +11,38 @@ function getAllProducts() {
             console.log("Error: " + error);
         }
     });    
+}
+
+function getSuggestedProducts() {
+    $.ajax({
+        url: getMostBoughtCategoryAddr + userId,
+        type: 'GET',
+        success: (res) => {
+            const category = res[0]._id.Cat;
+            if(category.length <= 0){
+                $('#suggestedProductList').html("No transaction history... :(");
+            } else{
+                getProductsByCategory(category);   
+            }
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: " + error);
+        }
+    });    
+}
+
+
+function getProductsByCategory(category) {
+    $.ajax({
+        url: getAllProductsByCategoryAddr + category[0],
+        type: 'GET',
+        success: (res) => {
+            drawProductList(res, "#suggestedProductList", productTemplateAddress);
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: " + error);
+        }
+    });
 }
 
 function drawProductList(list, htmlTag, templateAddr) {
@@ -161,5 +194,6 @@ function findInValues(arr, value) {
 
 function main() {
     getAllProducts();   
+    getSuggestedProducts();
 }
 main();
