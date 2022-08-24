@@ -19,6 +19,7 @@ const getStatusByIdAddr = serverAddr + "products/status/";
 const getExchangeRateAddr = serverAddr + "currency/";
 const getMyProductsToSaleListAddr = serverAddr + "products/myProductsToSaleList/";
 const deleteProductAddr = serverAddr + "products/";
+const getLocationAddr = serverAddr + "getAllLocations/";
 
 let productList = [];
 
