@@ -1,22 +1,30 @@
+<div class="row">
+    <div class="column" id="vidCol">
+        <div>Video about us: </div>
+        <video controls id="video">
+         <source id="source" src="http://localhost:8080/vids/colman.mp4" type="video/mp4" />
+        </video>
+    </div>
+    <div class="column">
+        <div>Our Location: </div>
+        <body>
+            <div id="map" style="width: 400px;height:400px;"></div>
+            <script
+                src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+            </script>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXjbsCCO0jq3mWr5ELcr1Y8PsQiElUptM&callback=initMap"
+                type="text/javascript">
+            </script>
+        </body>
+    </div>
+</div>
+<section>
+    <div>The Exchange Rate used in out store is:(1 USD to ILS) </div>
+    <div id="currency"></div>
+</section>
 
-<div>שער ההמרה בין שקל לדולר בחנות שלנו הוא:</div>
-<div id="currency"></div>
-<div>סרטון על המכללה למנהל:</div>
-<video controls id="video">
- <source id="source" src="http://localhost:8080/vids/colman.mp4" type="video/mp4" />
-</video>
-<div>המיקום שלנו:</div>
-<body>
-    <div id="map" style="width: 400px;height:400px;"></div>
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-    </script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXjbsCCO0jq3mWr5ELcr1Y8PsQiElUptM&callback=initMap"
-        type="text/javascript">
-    </script>
-</body>
 <script src="http://localhost:8080/js/about-us.js"></script>
 

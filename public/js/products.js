@@ -18,11 +18,10 @@ function getSuggestedProducts() {
         url: getMostBoughtCategoryAddr + userId,
         type: 'GET',
         success: (res) => {
-            const category = res[0]._id.Cat;
-            if(category.length <= 0){
-                $('#suggestedProductList').html("No transaction history... :(");
+            if(res && res[0] && res[0]._id.Cat.length > 0){
+                getProductsByCategory(res[0]._id.Cat);   
             } else{
-                getProductsByCategory(category);   
+                $('#suggestedProductList').html("No transaction history... :(");
             }
         },
         error: (xhr, status, error) => {
