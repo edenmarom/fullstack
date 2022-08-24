@@ -1,8 +1,8 @@
-const credentialAdrress = serverAddr + "checkCredentials";
+const credentialAdrress = serverAddr + "user/checkCredentials";
 let userId = "";
 const homeAddr = serverAddr + "html/home.html";
 const homecss = serverAddr + "css/home.css";
-const createUserAddress = serverAddr + "createUser";
+const createUserAddress = serverAddr + "user/createUser";
 
 $(".message a").click(function () {
   $("form").animate({ height: "toggle", opacity: "toggle" }, "slow");

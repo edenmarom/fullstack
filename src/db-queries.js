@@ -11,12 +11,8 @@ export const getAllTransactionsQuery = () => {
   return TransactionModel.find();
 };
 
-export const getAllLocationsQuery = () => {
-    return LocationModel.find();
-};
-
-export const getTransactionByIdQuery = (id) => {
-  return TransactionModel.findById(id);
+export const getAllUsersQuery = () => {
+  return UserModel.find();
 };
 
 export const createNewProductQuery = (product) => {
@@ -27,14 +23,20 @@ export const createNewTransactionQuery = (transaction) => {
   return TransactionModel.create(transaction);
 };
 
+export const createNewUserQuery = (user) => {
+  return UserModel.create(user);
+};
+
 export const updateProductQuery = (id, product) => {
   return ProductModel.findOneAndUpdate({ _id: id }, product, { new: true });
 };
 
 export const updateTransactionQuery = (id, transaction) => {
-  return TransactionModel.findOneAndUpdate({ _id: id }, transaction, {
-    new: true,
-  });
+  return TransactionModel.findOneAndUpdate({ _id: id }, transaction, {new: true,});
+};
+
+export const updateUserQuery = (id, user) => {
+  return UserModel.findOneAndUpdate({ _id: id }, user, { new: true });
 };
 
 export const deleteProductQuery = (id) => {
@@ -43,6 +45,24 @@ export const deleteProductQuery = (id) => {
 
 export const deleteTransactionQuery = (id) => {
   return TransactionModel.findByIdAndDelete(id);
+};
+
+export const deleteUserQuery = (id) => {
+  return UserModel.findByIdAndDelete(id);
+};
+
+export const getProductByIdQuery = (id) => {
+  return ProductModel.find().
+  where("_id").equals(id);
+};
+
+export const getTransactionByIdQuery = (id) => {
+  return TransactionModel.findById(id);
+};
+
+export const getUserByNameQuery = (name) => {
+  return UserModel.find().
+  where("userName").equals(name);
 };
 
 export const groupbyCategoryQuery = () => {
@@ -72,11 +92,6 @@ export const getProductsWithFiltersQuery = (
     .equals(category);
 };
 
-export const getProductByIdQuery = (id) => {
-    return ProductModel.find().
-    where("_id").equals(id);
-};
-
 export const getMyProductsToSaleListQuery = (id) => {
     return ProductModel.find().
     where("publisherId").equals(id);
@@ -87,9 +102,6 @@ export const checkCredentialsQuery = (username, password) => {
   return UserModel.find(query);
 };
 
-export const createNewUserQuery = (user) => {
-  return UserModel.create(user);
-};
 
 export const purchaseCountPerMonthQuery = (id) => {
     return TransactionModel.aggregate([
@@ -181,4 +193,8 @@ export const getMostBoughtCategoryQuery = (id) => {
         $limit: 1
     }
 ]);
+};
+
+export const getAllLocationsQuery = () => {
+  return LocationModel.find();
 };

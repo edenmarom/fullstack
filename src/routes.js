@@ -4,7 +4,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { transactionsRouter } from "./routers/transactions-router.js";
 import { productRouter } from "./routers/product-router.js";
-import { checkCredentials, createUser } from "./controllers/user-controller.js";
+import { userRouter } from "./routers/user-router.js";
 import { 
     salesCountPerMonthCSV,
     purchaseCountPerMonthCSV  
@@ -27,8 +27,7 @@ router.get('/purchaseCountPerMonthCSV/:id', purchaseCountPerMonthCSV);
 router.get('/salesCountPerMonthCSV/:id', salesCountPerMonthCSV);
 router.use("/products", productRouter);
 router.use("/transactions", transactionsRouter);
-router.post("/checkCredentials", checkCredentials);
-router.post("/createUser", createUser);
+router.use("/user", userRouter);
 router.get("/getAllLocations", getAllLocations);
 router.get("/currency", currencyApi);
 router.get("/mostBoughtCategory/:id", getMostBoughtCategory);
