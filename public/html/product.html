@@ -1,10 +1,11 @@
-<div class="card" style="width: 18rem">
-  <img src="{$imgSrc}" class="card-img-top" alt="" />
+<div class="card" style="width: 25rem">
+  <img src="{$imgSrc}" class="card-img-top" width="300" height="400" alt="" />
   <div class="card-body">
     <h5 class="card-title">{$name}</h5>
     <p class="card-price">{$price}</p>
     <p class="currency">{$currency}</p>
     <p class="card-text">{$description}</p>
+    <p class="location">{$location}</p>
     <p class="category">{$category}</p>
     <p class="status">{$status}</p>
     <button id="{$productId}" class="btn btn-primary" onClick="buyClick(this.id)">רכישה</button>
@@ -15,3 +16,4 @@
       >שתף בטוויטר</a>
   </div>
 </div>
+

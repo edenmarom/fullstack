@@ -93,7 +93,7 @@ header {
 }
 
 body {
-  background: rgb(230, 238, 242);
+  background: rgb(255, 255, 255);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      

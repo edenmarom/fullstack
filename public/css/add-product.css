@@ -1,1 +1,9 @@
 
+#formContent{
+    column-count: 2;
+    column-gap: 123px;
+}
+
+#addProductForm{
+    padding: 25px 200px;
+}

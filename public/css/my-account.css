@@ -17,8 +17,18 @@
     grid-template-columns: repeat(3 , 2fr);
 }
 
-.card
+.displayGraphs{
+   
+    margin: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
+}
+
+.graph
 {
-    font-family: fantasy;
-    border: 1px black;
+    display: inline-block;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 60px;
+    padding: 1rem 1rem;
+    vertical-align: middle;
 }

@@ -1,6 +1,7 @@
 *{
-    background-color: rgb(230, 238, 242);
+    background-color: rgb(255, 255, 255);
 }
+
 
 nav .nav-link
 {
@@ -8,6 +9,10 @@ nav .nav-link
     color: rgb(11, 63, 63);
     font-family: fantasy;
     font-size: 30px;
+    transition-property: inherit;
+    transition-duration: 0.5s;
+    text-shadow: 2px 2px 8px rgb(255, 255, 255);
+    
 }
 
 nav .container-fluid
@@ -26,9 +31,11 @@ nav .nav-item
     
 }
 
+
 nav .nav-link:hover
 {
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
+    font-size: 40px;
 }
 
 nav .form-control
@@ -90,7 +97,7 @@ canvas
     text-decoration: none;
     display: block;
   }
-  
+
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {background-color: #ddd;}
   

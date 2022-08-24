@@ -33,6 +33,7 @@ function productFieldReplacement(templateStr, product) {
     temporaryTemplate = temporaryTemplate.replace('{$status}', product.status);
     temporaryTemplate = temporaryTemplate.replace('{$imgSrc}', product.imgUrl);
     temporaryTemplate = temporaryTemplate.replace('{$productId}', product._id);
+    temporaryTemplate = temporaryTemplate.replace('{$location}', product.location);
     return temporaryTemplate;
 }
 
@@ -82,7 +83,8 @@ function postTransaction(transactionParams) {
         'contentType': 'application/json',
         'processData': false,
         success: () => {
-            loadHomeContent(myAccountHtmlAddr,myAccountCssAddr);    
+            alert("Product bought succesfully");
+            getAllProducts();
         },
         error: () => {
             alert("Error please try again.");
