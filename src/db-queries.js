@@ -140,3 +140,41 @@ export const salesCountPerMonthQuery = (id) => {
            }
     ]);
 };
+
+const agg = [
+    {
+        '$match': {
+            'buyer': 'gal'
+        }
+    }, {
+        '$lookup': {
+            'from': 'products',
+            'localField': 'product',
+            'foreignField': '_id',
+            'as': 'ProdDetail'
+        }
+    }, {
+        '$project': {
+            '_id': 1,
+            'ProdDetail.category': 1
+        }
+    }, {
+        '$group': {
+            '_id': {
+                'Cat': '$ProdDetail.category'
+            },
+            'countOfCat': {
+                '$count': {}
+            }
+        }
+    }, {
+        '$sort': {
+            'countOfCat': -1
+        }
+    }, {
+        '$limit': 1
+    }, {}
+];
+
+
+
