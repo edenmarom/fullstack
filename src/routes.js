@@ -23,6 +23,9 @@ router.use("/js", express.static(path.join(__dirname, "/../public/js")));
 router.use("/html", express.static(path.join(__dirname, "/../public/html")));
 router.use("/vids", express.static(path.join(__dirname, "/../public/vids")));
 router.use("/fonts", express.static(path.join(__dirname, "/../public/fonts")));
+router.get("/", (req, res) => {
+        res.sendFile(path.join(__dirname + "/../public/html/index.html"));
+});
 
 router.get('/purchaseCountPerMonthCSV/:id', purchaseCountPerMonthCSV);
 router.get('/salesCountPerMonthCSV/:id', salesCountPerMonthCSV);

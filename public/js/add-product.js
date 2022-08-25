@@ -9,7 +9,6 @@ $('#addBtn').click(function(){
         imgUrl: $('#imgUrl').val(),
         publisherId: userId,
         status: "unsold"
-      
     });
 
     if($('#product-name').val().length > 0 &&
@@ -28,7 +27,7 @@ $('#addBtn').click(function(){
                 success: () => {
                     alert("product added successfully")
                 },
-                error: (xhr, status, error) => {}});
+                error: () => {}});
        }
-       else {alert("Please enter all fields")};       
+       else {alert("Please enter all fields");}
  });

@@ -26,7 +26,6 @@ const getAllProductsByCategoryAddr = serverAddr + "products/getAllProductsByCate
 let productList = [];
 
 function createCanvas() {
-
     const c = document.getElementById("myCanvas");
     const ctx = c.getContext("2d");
     ctx.font = "50px fantasy";
@@ -36,14 +35,7 @@ function createCanvas() {
     gradient.addColorStop("1.0", "black");
     ctx.fillStyle = gradient;
     ctx.fillText("Share&Buy", 10, 65);
-    
 }
-
-function main() {
-    createCanvas(); 
-    loadHomeContent(productListHtmlAddr,productListCssAddr); 
-}
-main();
 
 function loadHomeContent(htmlAddr,cssAddr) { 
     $.ajax({
@@ -81,3 +73,9 @@ $('#home').click(function(){
 $('#addProduct').click(function(){
     loadHomeContent(addProductHtmlAddr,addProductCssAddr);    
 });
+
+function main() {
+    createCanvas();
+    loadHomeContent(productListHtmlAddr,productListCssAddr);
+}
+main();

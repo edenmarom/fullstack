@@ -1,4 +1,3 @@
-
 function getAllProducts() {
     $.ajax({
         url: productsAddress,

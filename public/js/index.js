@@ -2,12 +2,6 @@ const serverAddr = "http://localhost:8080/";
 const loginAddress = serverAddr+ "html/login.html"
 const loginCss = serverAddr + "css/login.css"
 
-function main(){
-    loadView(loginAddress, loginCss);
-}
-
-main();
-
 function loadView(htmlAddr, cssAddr) {
     $.ajax({
         url: htmlAddr,
@@ -27,5 +21,11 @@ function loadView(htmlAddr, cssAddr) {
     link.media = 'all';
     $("head").append(link);
 }
+
+function main(){
+    loadView(loginAddress, loginCss);
+}
+
+main();
 
 

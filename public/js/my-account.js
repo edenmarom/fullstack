@@ -1,14 +1,3 @@
-function main() {
-    let purchaseTag = "#purchaseGraph";
-    let salesTag = "#salesGraph";
-    let purchaseUrl = serverAddr + "purchaseCountPerMonthCSV/" + userId;
-    let salesUrl = serverAddr + "salesCountPerMonthCSV/" + userId;
-    initGraph(purchaseTag, purchaseUrl);
-    initGraph(salesTag, salesUrl);
-    getMyProductsToSale()
-}
-main();
-
 function initGraph(htmlTag, url) {
     var margin = {top: 30, right: 30, bottom: 70, left: 60}, width = 460 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
@@ -81,5 +70,16 @@ function deleteProductClick(id) {
         }
     });
 }
+
+function main() {
+    let purchaseTag = "#purchaseGraph";
+    let salesTag = "#salesGraph";
+    let purchaseUrl = serverAddr + "purchaseCountPerMonthCSV/" + userId;
+    let salesUrl = serverAddr + "salesCountPerMonthCSV/" + userId;
+    initGraph(purchaseTag, purchaseUrl);
+    initGraph(salesTag, salesUrl);
+    getMyProductsToSale()
+}
+main();
 
 
