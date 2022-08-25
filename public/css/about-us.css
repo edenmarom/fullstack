@@ -11,10 +11,19 @@
 }
 
 #vidCol{
-    padding-left: 200px;
+    padding-left: 310px;
+}
+
+#mapCol{
+    padding-left: 130px;
 }
 
 section{
     text-align: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
+#information{
     padding-top: 50px;
 }

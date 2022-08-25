@@ -1,18 +1,8 @@
-.form-row
-{
-    display: flex;
-}
-
-.form-row.col-group
-{
-    flex: 1; 
-}
-
-#productList
-{
+#productList{
     display: grid;
     grid-template-columns: repeat(3 , 2fr);
     padding: 50px;
+    padding-right: 10px;
 }
 
 #suggestedProductList{
@@ -29,4 +19,45 @@
 #suggestedHeader{
     text-align: center;
 }
+
+#asideFilters{
+    float:right;
+    min-width: 350px;
+    padding-right: 60px;
+    border-left: 1px solid grey;
+    margin-top: 70px;
+}
+
+#filterForm{
+    margin: 20px;
+}
+
+#searchBtn{
+    margin-top: 5px;
+    position: relative;
+    left: 175px;
+    width: 75px;
+}
+
+#cancelBtn{
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 250px;
+}
+
+#search-input{
+    margin-top: 60px;
+}
+
+#filtersHeader{
+    padding-top: 65px;
+}
+
+#filterBtn{
+    position: relative;
+    left: 175px;
+    width: 75px;
+}
+
+
 
