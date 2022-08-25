@@ -6,7 +6,6 @@ const io = new Server(server, { cors: { origins: "*:*" } });
 
 let userCounter = 0;
 io.on("connection", (socket) => {
-  console.log("connection");
   userCounter++;
   io.emit("counter", userCounter);
 
@@ -19,4 +18,5 @@ const port = 8080;
 
 server.listen(port, () => {
   console.log(`listening on ${port}`);
+  console.log("http://localhost:8080/html/");
 });
